@@ -1,2 +1,2 @@
-# papers-public
-Public repository about my scientific papers
+# papers
+Own research papers

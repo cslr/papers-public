@@ -1,0 +1,245 @@
+
+\documentclass[preprint,12pt]{elsarticle}
+%%\documentclass[preprint,1p,times,twocolumn]{elsarticle}
+
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb,amsmath}
+\usepackage[strings]{underscore}
+
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+\journal{Neurocomputing}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Extending neural networks to use dimensional numbers}
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \address[label1]{}
+%% \address[label2]{}
+
+\author{Tomas Ukkonen}
+\ead{tomas.ukkonen@novelinsight.fi}
+\ead[url]{www.novelinsight.fi}
+\address{Novel Insight, Finland}
+
+\begin{abstract}
+  The multilayer neural network architecture has seen relatively little number theoretic research
+  despite the fact that improving fundamental computing capacity by extending to
+  the larger set of possible 
+  numbers and functions could improve machine learning results. Currently, typical networks often use 
+  real and sometimes complex numbers. Extending numbers to contain dimensional information 
+  may improve abstract processing of real world data. The resulting polynomial field generalizes
+  multiplication to convolution while neural network is modified to learn to 
+  be invariant to topological operation of stretching. Experiments using synthetic and
+  text-based data sets compare performance to real and complex value implementations.
+
+\end{abstract}
+
+%%Graphical abstract
+%%%%\begin{graphicalabstract}
+%\includegraphics{grabs}
+%%%%\end{graphicalabstract}
+
+%%Research highlights
+%%%%\begin{highlights}
+%%%%\item Research highlight 1
+%%%%\item Research highlight 2
+%%%%\end{highlights}
+
+\begin{keyword}
+  neural networks, polynomial fields, number theory, natural language processing
+%% keywords here, in the form: keyword \sep keyword
+
+%% PACS codes here, in the form: \PACS code \sep code
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+\end{keyword}
+
+\end{frontmatter}
+
+
+%% \linenumbers
+
+%% main text
+\section{Introduction}
+\label{intro}
+
+Number theoretic work in neural networks research has not been very common although more complex computations and functions could improve optimization results without need to do major modifications to standard architectures (fully connected, convolutional, recurrent) or core algorithms (backpropagation, stochastic gradient descent, activation functions) \cite{haykinneurobook}. In research, neural networks has been typically only extended to process complex numbers or sometimes quaternions \cite{complexnnarticle1:1993:ICJNN, complexnnarticle2:2018:SICE, complexneuralnetworksbook, quaternionnnarticle:2018:ICJNN}.
+
+\section{Theoretical background}
+\label{background}
+
+This paper's motivation to extend real or complex numbers to a polynomial ring is an intution that real numbers can be extended to contain dimensionality information by using hyperreal numbers, non-standard analysis and fractal geometry \cite{hyperrealarticle,nonstandardanalysisbook, fractalgeometrybook}. A quantity of dimension $d$ can be written to be multiplication of a real valued scalar $a$ and a volume of $d$-dimensional hypercube $r^d$ where $r$ is arbitrary (unit) length of one side of the hypercube. One can then make somewhat naive definition of ``multidimensional'' numbers $s$.
+
+\begin{equation}
+  s = a_0*r^0 + a_1*r^1 + a_2*r^2 ...
+\end{equation}
+
+In comparison to the length of real line $r$'s length is infinite and outside of the set $\mathbb{R}$ so the components are in the same direction but perpendicular to each other in a vector space sense because there are no scalar $a \in \mathbb{R}$ to scale different components to be same. It is possible to formally extend this line of reasoning to cases where $d$ is real valued meaning fractal dimensions or abstractly to imaginary and negative dimensions ($r^{-1}$ is infinitesimal $dr$) and in addition to multiplication define a strectching operation $c$ to an object $a_{new}*r^d=a_{old}*(c*r)^d=a_{old}*c^d*r^d$. By incorporating dimensional information to a neural network it is hoped to perform better in abstract processing of real world data.
+
+To have a well-defined closed number system which can be computed using computers we restrict dimensions to be natural numbers $\mathbb{N}$ and define a complex polynomial field $R[X]/(X^K-1)$ \cite{discretemathbook} using the following definitions 
+
+\begin{equation}
+  \label{polydef}
+  \begin{gathered}
+    s = \sum_{d=0}^{K-1} a_d*r^{d}, a_d \in \mathbb{C}, d \in \mathbb{N} \\
+    s_{1}+s_{2} = \sum_{d=0}^{K-1} (a_{d_{1}}+a_{d_{2}})*r^{d} \\
+    s_{1}*s_{2} = \sum_{d_{1}=0,d_{2}=0}^{K-1, K-1} a_{d_{1}}*a_{d_{2}}*r^{d_1+d_2 (mod) K}
+  \end{gathered}
+\end{equation}
+
+By choosing modulo operation $K$ to be a prime number it is easy to see that the polynomial ring becomes a field with finite $K$ number of components. Multiplication operation leads now to a circular convolution of the coefficients. The circular convolution and its inverse, the division operation, can be efficiently calculated using discrete Fourier transform \cite{mitradspbook}. By making dimensions $d$ circular we lose the comparability of the numbers even when using real coefficients but if numbers/the circular convolution is properly zero padded it is often possible to calculate the normal convolution. The convolution operation processes each component symmetrically ignoring dimensional information. This symmetry is later broken by applying stretching operation to data processed by a neural network.
+
+\section{Neural network architectures using polynomial field numbers}
+\label{models}
+
+\subsection{Linear model}
+\label{linearmodel}
+
+The simplicity of the linear optimization is that the function $\bf{y} = \bf{A}*\bf{x} + \bf{b}$ has only one easily solvable MSE optimum and it is the global optimum of the problem. In practice, linear functions are often too simple for many practical problems but if we can do a non-linear number theoretic extension to real numbers fulfilling field axioms it is possible to solve global optimum of non-linear problem. Unfortunately, for polynomial field numbers $s$ and real valued data the non-real parts of the coefficients are always zero meaning that it is not possible to extend calculations non-linearly.
+
+In data analytics, however, it is common to discretize real valued variables using one hot encoding which maps real numbers to higher dimensional vectors after which the global optimum of an approximated problem can be solved somewhat similar to support vector machines $\bf{add reference}$. In this paper, further number theoretic possiblities were not studied and a multilayer neural network was used instead in which non-linearities make it possible to process real valued data using extended number systems.
+
+\subsection{Deep recurrent neural network model}
+\label{neuralnetworkmodel}
+
+To keep simple optimization methods like stochastic gradient descent working and to combat against vanishing gradient problem the neural network was kept as closely to linear as possible. The densely connected neural network's layers uses a leaky ReLU non-linearity \cite{reluarticle1, reluarticle2:2011:AISTATS} except at the last layer which was chosen to be fully linear. The ReLU activation function was extended to complex numbers and polynomial fields by applying ReLU non-linearity component-wise. The simple ReLU activation function makes it possible to calculate easily derivates and the Jacobian matrix using backpropagation. For complex numbers $z$ and especially for polynomial field numbers $s$ we assumed that the component-wise ReLU is close to a linear function which goes through origo meaning its slope or the first derivate can be aproximated easily 
+
+\begin{equation}
+  f(z) = a*z,df/dz \approx a(z) = f(z)/z = max(0.01*z,z)/z
+\end{equation}
+
+Note that derivates are well-defined for linear algebra when using polynomial field numbers $s$ because derivates are not dependend from what direction zero is approached.
+
+\begin{equation}
+  df(s)/ds = \lim_{h \to 0} ((a*(s+h) +b) - a*s)/h = lim_{h \to 0} a = a
+\end{equation}
+
+
+For calculating the derivate of mean squared error using complex polynomial field numbers MSE is generalized to be real valued function ($\sigma_i(s)$ selects $i$:th complex component of $s$ and its generalization is to all compomnents is identity function $\sigma(s) = s$). Because variables in the inner product are complex Wirtinger-calculus was used to calculate derivates \cite{complexgradientarticle}. In the gradient we calculate component-wise multiplication of $s$ (marked with combined transpose/vector product $\mathbf{x}^{T*}$) and use the fact that we can then combine $\sigma_i(s)$ operations to a single $\sigma(s)$ operation.
+
+\begin{equation}
+  \begin{gathered}
+    MSE(\mathbf{w}) = E_{\mathbf{x}\mathbf{y}}\{\frac{1}{2} \sum_{i=0}^{K-1} ||\sigma_i(\mathbf{f}(\mathbf{x}|\mathbf{w}))-\sigma_i(\mathbf{y})||^2\} \\
+    \frac{dMSE(\mathbf{w})}{d\mathbf{w}} = E_{\mathbf{x}\mathbf{y}}\{\sum_{i=0}^{K-1}\sigma_i(\mathbf{f}(\mathbf{x}|\mathbf{w})-\mathbf{y})^T\overline{\frac{d\sigma_i(\mathbf{f}(\mathbf{x}|\mathbf{w}))}{d\mathbf{w}}}\} \\
+    \frac{dMSE(\mathbf{w})}{d\mathbf{w}} = E_{\mathbf{x}\mathbf{y}}\{\sigma(\mathbf{f}(\mathbf{x}|\mathbf{w})-\mathbf{y})^{T*}\overline{\frac{d\sigma(\mathbf{f}(\mathbf{x}|\mathbf{w}))}{d\mathbf{w}}}\} \\
+    \frac{dMSE(\mathbf{w})}{d\mathbf{w}} = E_{\mathbf{x}\mathbf{y}}\{(\mathbf{f}(\mathbf{x}|\mathbf{w})-\mathbf{y})^{T*}\overline{\frac{d\mathbf{f}(\mathbf{x}|\mathbf{w})}{d\mathbf{w}}}\}
+  \end{gathered}
+\end{equation}
+
+In experiments we always set non-real parts of the error vector to be zero meaning that we only optimize for the correct real part of the output. In our second experiment (Section \ref{experiment2}) we used a simple recurrent neural network for predicting and generating text sequences. To keep experiments simple a normal feedforward network with a single feedback loop from output to input was used instead of LSTMs. Jacobian matrix was computed by applying BPTT algorithm to recurrent neural networks.
+
+To improve generalization and to simulate practical optimization tasks the dropout heuristic with 20\% dropout rate of hidden layer neurons was used \cite{dropoutarticle}. When using polynomial field numbers the idea that stretching an object should not essentially change properties of an object is used to apply random scretching operation $c \in [0.2,1.4]$ as a generalized dropout operation to hidden layers. This operation forces network to use dimensionality information and because high dimensional components change the fastest it causes network to process data in low dimensions.
+
+\section{Experimental results}
+\label{experiemnts}
+
+\subsection{Experiment 1}
+\label{experiment1}
+
+In the first experiment simple synthetic data and small number of parameters was used. The amount of synthetic data was chosen to be large $N=10^6$ so a raw optimization performance without early stopping or dividing data into training and testing sets was measured. The neural network is a two-layer $4-4-4$ dense neural network where the first layer have ReLU activation function and the last layer is linear. Here we are interested how much better neural network learns simple non-linear task. The input variables $\mathbf{x}\sim N(\mathbf{0},4^2\mathbf{I})$ are mapped to values $\mathbf{y}$ using equations
+
+\begin{equation}
+  \begin{gathered}
+    y_1(\mathbf{x}) = \sin(f*x_1*x_2*x_3*x_4) \\
+    y_2(\mathbf{x}) = sign(x_4)*a^{x_1/x_3} \\
+    y_3(\mathbf{x}) = sign(\cos(w*x_1)) + sign(x_2) + sign(x_4) \\
+    y_4(\mathbf{x}) = x_2/x_1 + x_3*\sqrt{x_4} + |x_4-x_1|
+  \end{gathered}
+\end{equation}
+  
+\subsection{Experiment 2}
+\label{experiment2}
+
+The second experiment uses a recurrent neural network (Section \ref{neuralnetworkmodel}) to predict text sequences. We use dataset X. Add references to OpenAI/Google Brain GPT-3 and GPT-2 papers and earlier papers using recurrent neural networks in academy.
+
+\section{Discussion}
+\label{discussion1}
+
+In this paper we have described number theoretic extension to neural networks which can be used to create neural network with arbitrary large number of parameters using same number of variables and layers. Although it has not been studied in this paper, the convolutional nature of the number system could make it useful for processing real world signals like audio or pictures. 
+
+
+\section{Funding}
+
+This research has not received any funding or grants from any sources.
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+%% If you have bibdatabase file and want bibtex to generate the
+%% bibitems, please use
+%%
+%%  \bibliographystyle{elsarticle-num} 
+%%  \bibliography{<your bibdatabase>}
+
+%% else use the following coding to input the bibitems directly in the
+%% TeX file.
+
+
+\bibliographystyle{elsarticle-num}
+\bibliography{bibfile}{}
+  
+%% \bibitem{label}
+%% Text of bibliographic item
+
+%% \bibitem{}
+
+%%\end{thebibliography}
+\end{document}
+\endinput
+%%
+%% End of file `elsarticle-template-num.tex'.

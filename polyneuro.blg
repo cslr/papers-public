@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/dev/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: polyneuro.aux
+The style file: elsarticle-num.bst
+Database file #1: bibfile.bib
+Warning--empty pages in complexnnarticle1:1993:ICJNN
+Warning--empty pages in complexnnarticle2:2018:SICE
+Warning--empty pages in quaternionnnarticle:2018:ICJNN
+Warning--empty pages in hyperrealarticle
+Warning--empty pages in reluarticle2:2011:AISTATS
+You've used 14 entries,
+            2959 wiz_defined-function locations,
+            761 strings with 7564 characters,
+and the built_in function-call counts, 4060 in all, are:
+= -- 344
+> -- 96
+< -- 5
++ -- 40
+- -- 26
+* -- 224
+:= -- 530
+add.period$ -- 18
+call.type$ -- 14
+change.case$ -- 12
+chr.to.int$ -- 12
+cite$ -- 19
+duplicate$ -- 158
+empty$ -- 589
+format.name$ -- 31
+if$ -- 1136
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 20
+newline$ -- 54
+num.names$ -- 14
+pop$ -- 144
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 295
+stack$ -- 0
+substring$ -- 56
+swap$ -- 31
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 18
+width$ -- 16
+write$ -- 137
+(There were 5 warnings)

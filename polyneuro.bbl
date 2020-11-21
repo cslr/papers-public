@@ -1,0 +1,77 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{haykinneurobook}
+S.~Haykin, Neural Networks: A Comprehensive Foundation, 2nd Edition,
+  Prentice-Hall International, 1999 (1999).
+
+\bibitem{complexnnarticle1:1993:ICJNN}
+T.~Nitta, A back-propagation algorithm for complex numbered neural networks,
+  in: Proceedings of 1993 International Conference on Neural Networks, IEEE,
+  1993 (1993).
+\newblock \href {https://doi.org/10.1109/IJCNN.1993.716968}
+  {\path{doi:10.1109/IJCNN.1993.716968}}.
+
+\bibitem{complexnnarticle2:2018:SICE}
+K.~Tachibana, K.~Otsuka, Wind prediction performance of complex neural network
+  with relu activation function, in: 2018 57th Annual Conference of the Society
+  of Instrument and Control Engineers of Japan, IEEE, 2018 (2018).
+\newblock \href {https://doi.org/10.23919/SICE.2018.8492660}
+  {\path{doi:10.23919/SICE.2018.8492660}}.
+
+\bibitem{complexneuralnetworksbook}
+A.~Hirose, Complex-Valued Neural Networks: Theories and Applications, World
+  Scientific Publishing Cp. Ptd. Ltd., 2003 (2003).
+
+\bibitem{quaternionnnarticle:2018:ICJNN}
+C.~J. Gaudet, A.~S. Maida, Deep quaternion networks, in: 2018 International
+  Joint Conference on Neural Networks, IEEE, 2018 (2018).
+\newblock \href {https://doi.org/10.1109/IJCNN.2018.8489651}
+  {\path{doi:10.1109/IJCNN.2018.8489651}}.
+
+\bibitem{hyperrealarticle}
+H.~J. Keisler, The hyperreal line, in: Real Numbers, Generalizations, of the
+  Reals, and Theories of Continua, Vol. 242, Springer, 1994 (1994).
+\newblock \href {https://doi.org/10.1007/978-94-015-8248-3_8}
+  {\path{doi:10.1007/978-94-015-8248-3_8}}.
+
+\bibitem{nonstandardanalysisbook}
+A.~Robinson, Non-Standard Analysis, revised edition, Princeton University
+  Press, 1996 (1996).
+
+\bibitem{fractalgeometrybook}
+K.~Falconer, Fractal Geometry: Mathematical Foundations and Applications, 2nd
+  Edition, John Wiley \& Sons Ltd., 2003 (2003).
+
+\bibitem{discretemathbook}
+K.~B. Moore, Discrete Mathematics Research Progress, Nova Science Publishers
+  Inc., 2008 (2008).
+
+\bibitem{mitradspbook}
+S.~K. Mitra, Digital Signal Processing: A Computer-Based Approach, McGraw-Hill
+  series in electrical and computer engineering, 1998 (1998).
+
+\bibitem{reluarticle1}
+R.~Hahnloser, R.~Sarpeshkar, M.~Mahowald, R.~Douglas, H.~S. Seung, Digital
+  selection and analogue amplification coexist in a cortex-inspired silicon
+  circuit, Nature 405~(6789) (2000) 947--951 (2000).
+
+\bibitem{reluarticle2:2011:AISTATS}
+X.~Glorot, A.~Bordes, Y.~Bengio, Deep sparse rectifier neural networks, in:
+  Proceedings of the 14th International Conference on Artificial Intelligence
+  and Statistics (AISTATS), 2011 (2011).
+
+\bibitem{complexgradientarticle}
+K.~Kreutz-Delgado, The complex gradient operator and the cr-calculus, arXiv.org
+  preprint 0906.4835v1 (2009).
+
+\bibitem{dropoutarticle}
+N.~Srivastava, G.~Hinton, A.~Krizhevsky, I.~Sutskever, R.~Salakhutdinov,
+  Dropout: a simple way to prevent neural networks from overfitting, The
+  Journal of Machine Learning Research 15~(1) (2014) 1929--1958 (2014).
+
+\end{thebibliography}
