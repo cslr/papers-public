@@ -1,2 +1,4 @@
 # papers
-Own research papers
+Own research papers.
+
+Tomas Ukkonen, Master of Science
